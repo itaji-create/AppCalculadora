@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Calculadora online</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- CSS do Bootstrap -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container mt-5">
+		<form action="#" th:action="@{/}" method="post" id="operacaoForm">
+			<h2>Calculadora</h2>
+			<div class="form-group">
+				<label for="modelOperacoes">Selecione a operação:</label>
+				<select class="form-control" id="modelOperacoes" name="modelOperacoes">
+					<option th:each="operacao: ${modelOperacoes}"
+							th:value="${operacao}"
+							th:text="${operacao}"
+							th:selected="${operacao == selectedModel}">
+							Operação
+					</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="valor01">Valor 01:</label>
+				<input class="form-control" id="valor01" name="valor01" type="text">
+			</div>
+			<div>
+				<label for="valor02">Valor 01:</label>
+				<input class="form-control" id="valor02" name="valor02" type="text">
+			</div>
+			<div>
+				<button class="btn btn-primary mt-5" type="submit" id="suvmitBtn">Calcular</button>
+			</div>
+		</form>
+		<div class="mt-5" th:if="${response != null}" id="responseDiv">
+			<h4>Resposta:</h4>
+			<span th:text="${response}"></span>
+		</div>
+	</div>
+	
+	<!-- JavaScript do Bootstrap e dependências -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
+	</script>
+</body>
+</html>
